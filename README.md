@@ -1,57 +1,65 @@
-# About NoiseCapture App
+# NoiseCapture HTML
 
-[![Build Status](https://travis-ci.org/Ifsttar/NoiseCapture.svg?branch=master)](https://travis-ci.org/Ifsttar/NoiseCapture) 
+**NoiseCapture HTML est un port Web indépendant, réalisé en HTML, CSS et JavaScript, inspiré de NoiseCapture. Ce n’est pas l’application Android NoiseCapture, ni un portage Android, un APK ou un produit officiel de l’équipe NoiseCapture.**
 
-**NoiseCapture App** is Android App dedicated to the measurement of environmental noise.
+Ce dépôt est un fork du projet Android [NoiseCapture d’Ifsttar / Université Gustave Eiffel](https://github.com/Ifsttar/NoiseCapture). Le code Android d’origine reste présent dans le dépôt comme projet source distinct ; l’application Web décrite ici est la version ajoutée à la racine (`index.html`, `styles.css` et `app.js`). Elle s’exécute dans un navigateur et ne nécessite ni Android, ni Gradle, ni installation.
 
-## Description
-**NoiseCapture App** is an Android App project for measuring environmental noise using a smartphone. The goal is to **produce relevant noise indicators from audio measurements, including a geospatial representation**. Measurements can be shared with the community in order to produce participatory noise maps. **NoiseCapture App** is a component of a global infrastructure, _i.e._ a Spatial Data Infrastructure (SDI), called the **OnoMap SDI**, that allows to process and represent the geospatial information, like noise maps.
+> **Assistance de l’IA :** la conception et la réalisation du port HTML ont été effectuées avec l’assistance d’un outil d’intelligence artificielle. Le code et le comportement doivent être vérifiés avant tout usage pour lequel la précision des mesures est importante.
 
-* A  [**full description**](https://github.com/Ifsttar/NoiseCapture/wiki) of the whole OnoMap SDI, including the NoiseCapture App, is given in the [wiki pages](https://github.com/Ifsttar/NoiseCapture/wiki).
-* An **user guide**, for the use of the NoiseCapture App, is proposed within the NoiseCapture App (see the 'Help' page in the menu of NoiseCapture App).
+## Fonctionnalités Web
 
-## Features
+- Mesure en direct du niveau relatif reçu par le microphone, affiché sur une échelle indicative de 0 à 100.
+- Démarrage, pause, reprise et arrêt d’une session.
+- Relevés périodiques, courbe d’évolution et statistiques (Leq calculé à partir des relevés, minimum, maximum, L10, L50 et L90).
+- Enregistrement facultatif de la position GPS et affichage des points de la session.
+- Note par session, historique dans le navigateur et exports individuels en CSV ou en JSON pour tout l’historique.
+- Réglage de gain indicatif à partir d’un sonomètre de référence.
+- Interface adaptative pour écran mobile et ordinateur.
 
-NoiseCapture App features are divided into 3 parts:
+## Limites et précision
 
- - Measurement - Once the sound level calibration is done, the user start the measurement in order to record each second the LAeq, an average sound energy over a period of 1s. The spectrum repartition of the sound are analysed and stored using the Fourrier transform. The device location are recorded while measuring the sound level. The user has the hability to provide his own feedback about the feeling of the noise environment.
+Cette version Web ne reproduit pas le traitement acoustique de l’application Android d’origine et ne doit pas être considérée comme son équivalent fonctionnel ou métrologique.
 
- - Extented report - Advanced statistics are computed locally on the phone and shown to the user. For each user's measurement the locations of the noise levels are displayed in a map.
+Sans calibration, le niveau affiché est **une échelle relative de 0 à 100 calculée à partir du signal numérique du microphone**. Le zéro de cette échelle correspond au seuil de silence numérique ; ce n’est ni 0 dB SPL, ni le seuil d’audition. Les microphones et leurs gains diffèrent d’un appareil à l’autre : ces valeurs ne sont pas comparables comme des niveaux acoustiques absolus.
 
- - Share results with the community - Anonymous results are transfered to Virtual Hubs (web server) and post-processed in order to build a noise map that merge all community results. Participative noise maps can be displayed within the NoiseCapture App, or online at https://onomap.noise-planet.org/.
+Le réglage avec un sonomètre compense uniquement un décalage de gain. Il ne calibre pas la réponse en fréquence et cette version Web **n’applique pas de pondération A**. Même après ce réglage, les résultats sont indicatifs et ne sont pas des mesures certifiées en dB(A).
 
-## Developments
-NoiseCapture App is a collaboration between the [Environmental Acoustic Research unit](http://www.umrae.fr/en/) ([Ifsttar](http://www.ifsttar.fr)) and the [Lab-STICC](http://www.lab-sticc.fr/) CNRS. If you need more information about the project developped by the Environmental Acoustic Research unit and the Lab-STICC, on this topic, go to [http://www.noise-planet.org](http://noise-planet.org).
+## Lancer l’application
 
-## Download
-
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/org.noise_planet.noisecapture/)
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
-     alt="Get it on Google Play"
-     height="80">](https://play.google.com/store/apps/details?id=org.noise_planet.noisecapture)
-
-## Funding
-This application was developed under the initial funding the European project [ENERGIC-OD](http://www.energic-od.eu/), with the help of the [GEOPAL](http://www.geopal.org/accueil) program.
-
-## License
-NoiseCapture App is released under the GENERAL PUBLIC LICENSE Version 3. Please refer to GPLv3 for more details.
-
-## Version Web HTML
-
-Une version Web autonome est disponible à la racine du dépôt (`index.html`, `styles.css` et `app.js`). Elle permet de mesurer le niveau relatif capté par le microphone, de mettre une session en pause, d’afficher ses statistiques et ses relevés GPS, de conserver un historique local et d’exporter les sessions.
-
-Pour la lancer depuis la racine du dépôt :
+Depuis la racine du dépôt, lancez un serveur HTTP local :
 
 ```sh
 python3 -m http.server 8000
 ```
 
-Ouvrez ensuite [http://localhost:8000](http://localhost:8000) dans un navigateur récent. Le navigateur demande l’autorisation du microphone et, si vous le souhaitez, de la géolocalisation. En dehors de `localhost`, ces fonctions nécessitent une connexion HTTPS.
+Ouvrez ensuite <http://localhost:8000> dans un navigateur récent.
 
-Cette version Web n’enregistre ni ne transmet l’audio. Les mesures sont conservées dans le stockage local du navigateur. Les niveaux non calibrés sont affichés sur une échelle relative 0–100 décalée depuis le signal numérique du microphone ; 0 correspond au seuil de silence numérique, pas à 0 dB SPL. Le réglage par sonomètre permet une estimation indicative, mais cette version n’applique pas la pondération fréquentielle A et ne remplace donc pas une mesure acoustique étalonnée.
+Le navigateur demande l’autorisation d’utiliser le microphone lors du démarrage d’une mesure. La position GPS est facultative et nécessite une autorisation distincte. Les navigateurs autorisent généralement l’accès au microphone et à la géolocalisation uniquement en contexte sécurisé : `localhost` en développement ou HTTPS lors d’un hébergement.
 
-## Follow us
-Follow the developement of NoiseCapture App (and more...) on Twitter at @Noise_Planet
-[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/Noise_Planet)
+## Données et confidentialité
+
+- L’application analyse le microphone en direct et **n’enregistre pas l’audio**.
+- Aucune session n’est envoyée à un serveur par cette application.
+- Les sessions et les réglages sont conservés dans le stockage local du navigateur utilisé. Ils ne sont pas synchronisés entre navigateurs ou appareils ; effacer les données du site peut les supprimer.
+- Les coordonnées GPS ne sont ajoutées aux relevés que si le navigateur fournit une position autorisée.
+- Une session peut être exportée en CSV ; tout l’historique peut être exporté en JSON depuis la page Historique.
+- Un lien externe vers OpenStreetMap permet de visualiser une position lorsqu’elle est disponible.
+
+## Fichiers de l’application Web
+
+| Fichier | Rôle |
+| --- | --- |
+| `index.html` | Pages Mesure, Historique, Résultats et À propos. |
+| `styles.css` | Présentation adaptative et styles de l’interface. |
+| `app.js` | Capture et analyse audio côté navigateur, géolocalisation, statistiques, stockage et exports. |
+| `README.md` | Documentation de cette version Web et distinction avec l’application Android d’origine. |
+
+## Projet Android d’origine
+
+Le projet Android NoiseCapture vise la mesure du bruit environnemental sur téléphone, avec traitement audio, géolocalisation, statistiques et partage communautaire. Sa documentation, son code Android et ses versions officielles sont disponibles sur le [dépôt source Ifsttar / Université Gustave Eiffel](https://github.com/Ifsttar/NoiseCapture), sur le [site Noise-Planet](https://noise-planet.org/) et sur le [Google Play Store](https://play.google.com/store/apps/details?id=org.noise_planet.noisecapture).
+
+Les changements de l’application Web dans ce fork ne modifient pas le code de l’application Android d’origine.
+
+## Licence et attribution
+
+Le projet Android d’origine est publié sous GNU General Public License v3. Consultez le fichier [`LICENSE`](LICENSE) pour le texte de la licence applicable au dépôt et les notices d’attribution conservées avec le projet. NoiseCapture et Noise-Planet sont les projets de leurs auteurs d’origine ; ce port Web indépendant ne signifie pas qu’ils l’approuvent ou le maintiennent.

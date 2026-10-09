@@ -18,7 +18,7 @@
             <path d="M6 22h5l4-11 7 21 5-16 3 6h4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
-        <span><strong>NoiseCapture</strong><small>Écouter. Mesurer. Comprendre.</small></span>
+        <span><strong>NoiseCapture</strong><small>Port HTML indépendant</small></span>
       </a>
 
       <p class="nav-caption">ESPACE DE MESURE</p>
@@ -145,12 +145,14 @@
       </section>
 
       <section class="page-view" id="about-view" aria-labelledby="about-title" hidden>
-        <div class="page-heading"><div><p class="eyebrow">NOISECAPTURE WEB</p><h1 id="about-title">À propos de cette application</h1><p class="page-description">Une adaptation Web simplifiée de NoiseCapture, pour explorer le bruit ambiant depuis un navigateur.</p></div></div>
+        <div class="page-heading"><div><p class="eyebrow">NOISECAPTURE HTML</p><h1 id="about-title">À propos de ce port Web</h1><p class="page-description">Un port HTML indépendant inspiré de NoiseCapture. Il s’exécute dans un navigateur : ce n’est pas l’application Android NoiseCapture.</p></div></div>
         <div class="about-grid">
-          <article class="card about-card"><span class="about-number">01</span><h2>Comment ça marche ?</h2><p>Votre navigateur analyse localement le signal reçu par le microphone. Une valeur de niveau est calculée chaque seconde ; si vous l’autorisez, la position GPS est associée à ces relevés.</p></article>
+          <article class="card about-card"><span class="about-number">01</span><h2>Un port HTML indépendant</h2><p>Cette interface Web est une adaptation indépendante de NoiseCapture, réalisée en HTML, CSS et JavaScript. Elle s’exécute dans un navigateur. Ce n’est ni l’application Android, ni un APK, et elle n’est pas présentée comme une version officielle.</p></article>
           <article class="card about-card"><span class="about-number">02</span><h2>Limites de mesure</h2><p>Les valeurs sans calibration sont affichées sur une échelle relative 0–100, décalée depuis le niveau numérique du microphone. 0 correspond au seuil de silence numérique, pas au seuil d’audition. Le gain et la réponse fréquentielle varient selon les appareils : cette échelle ne représente pas des dB SPL réels.</p><p>Le réglage par sonomètre est indicatif : cette version Web n’applique pas de pondération fréquentielle A et ne fournit pas de mesure certifiée en dB(A).</p></article>
-          <article class="card about-card"><span class="about-number">03</span><h2>Respect de la vie privée</h2><p>Aucun fichier audio n’est créé ni envoyé. Les mesures et les positions restent dans le stockage local de votre navigateur ; vous pouvez les exporter ou les supprimer depuis l’historique.</p></article>
-          <article class="card about-card"><span class="about-number">04</span><h2>Conditions requises</h2><p>Le microphone et la géolocalisation sont accessibles uniquement depuis une connexion sécurisée (HTTPS) ou depuis <code>localhost</code>. Votre navigateur demandera votre autorisation au démarrage d’une mesure.</p></article>
+          <article class="card about-card"><span class="about-number">03</span><h2>Comment ça marche ?</h2><p>Votre navigateur analyse localement le signal reçu par le microphone. Une valeur de niveau est calculée chaque seconde ; si vous l’autorisez, la position GPS est associée à ces relevés.</p></article>
+          <article class="card about-card"><span class="about-number">04</span><h2>Respect de la vie privée</h2><p>Aucun fichier audio n’est créé ni envoyé. Les mesures et les positions restent dans le stockage local de votre navigateur ; vous pouvez les exporter ou les supprimer depuis l’historique.</p></article>
+          <article class="card about-card"><span class="about-number">05</span><h2>Conditions requises</h2><p>Le microphone et la géolocalisation sont accessibles uniquement depuis une connexion sécurisée (HTTPS) ou depuis <code>localhost</code>. Votre navigateur demandera votre autorisation au démarrage d’une mesure.</p></article>
+          <article class="card about-card"><span class="about-number">06</span><h2>Assistance de l’IA</h2><p>La réalisation et la documentation de ce port HTML ont été effectuées avec l’assistance d’un outil d’intelligence artificielle. Ce projet indépendant n’est ni l’application Android d’origine ni une version officielle maintenue par ses auteurs.</p></article>
         </div>
       </section>
 
@@ -168,7 +170,7 @@
         <div class="report-disclaimer" id="report-disclaimer"></div>
       </section>
 
-      <footer class="page-footer"><span>NoiseCapture Web · Projet NoiseCapture</span><span>Les mesures restent sur votre appareil</span></footer>
+      <footer class="page-footer"><span>NoiseCapture HTML · Port Web indépendant, pas l’application Android</span><span>Avec l’assistance de l’IA · Les mesures restent sur votre appareil</span></footer>
     </main>
   </div>
 
