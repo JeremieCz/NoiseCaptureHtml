@@ -38,7 +38,20 @@ This application was developed under the initial funding the European project [E
 ## License
 NoiseCapture App is released under the GENERAL PUBLIC LICENSE Version 3. Please refer to GPLv3 for more details.
 
+## Version Web HTML
+
+Une version Web autonome est disponible à la racine du dépôt (`index.html`, `styles.css` et `app.js`). Elle permet de mesurer le niveau relatif capté par le microphone, de mettre une session en pause, d’afficher ses statistiques et ses relevés GPS, de conserver un historique local et d’exporter les sessions.
+
+Pour la lancer depuis la racine du dépôt :
+
+```sh
+python3 -m http.server 8000
+```
+
+Ouvrez ensuite [http://localhost:8000](http://localhost:8000) dans un navigateur récent. Le navigateur demande l’autorisation du microphone et, si vous le souhaitez, de la géolocalisation. En dehors de `localhost`, ces fonctions nécessitent une connexion HTTPS.
+
+Cette version Web n’enregistre ni ne transmet l’audio. Les mesures sont conservées dans le stockage local du navigateur. Les niveaux non calibrés sont affichés sur une échelle relative 0–100 décalée depuis le signal numérique du microphone ; 0 correspond au seuil de silence numérique, pas à 0 dB SPL. Le réglage par sonomètre permet une estimation indicative, mais cette version n’applique pas la pondération fréquentielle A et ne remplace donc pas une mesure acoustique étalonnée.
+
 ## Follow us
 Follow the developement of NoiseCapture App (and more...) on Twitter at @Noise_Planet
 [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/Noise_Planet)
-
