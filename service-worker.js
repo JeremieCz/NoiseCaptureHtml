@@ -51,12 +51,15 @@ self.addEventListener("fetch", (event) => {
   }
 
   event.respondWith(
-    caches.match(request).then((cachedResponse) => cachedResponse || fetch(request).then((response) => {
-      if (response.ok) {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-      }
-      return response;
-    }))
+    caches.match(request).then((cachedResponse) => {
+      if (cachedResponse) return cachedResponse;
+      return fetch(request).then(async (response) => {
+        if (response.ok) {
+          const cache = await caches.open(CACHE_NAME);
+          await cache.put(request, response.clone());
+        }
+        return response;
+      });
+    })
   );
 });
