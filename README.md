@@ -36,6 +36,12 @@ Ouvrez ensuite <http://localhost:8000> dans un navigateur récent.
 
 Le navigateur demande l’autorisation d’utiliser le microphone lors du démarrage d’une mesure. La position GPS est facultative et nécessite une autorisation distincte. Les navigateurs autorisent généralement l’accès au microphone et à la géolocalisation uniquement en contexte sécurisé : `localhost` en développement ou HTTPS lors d’un hébergement.
 
+## Installer sur iPhone
+
+Hébergez l’application sur une adresse HTTPS, ouvrez-la dans Safari sur l’iPhone, puis choisissez **Partager → Sur l’écran d’accueil**. L’application peut ensuite être lancée depuis son icône et son interface reste disponible hors ligne après son premier chargement.
+
+Le microphone et la géolocalisation nécessitent toujours les autorisations de Safari. iOS peut interrompre une mesure lorsque l’application passe en arrière-plan ou que l’écran est verrouillé : gardez-la au premier plan pendant une mesure. Cette PWA n’est pas une application iOS native et ne remplace pas l’application Android d’origine.
+
 ## Données et confidentialité
 
 - L’application analyse le microphone en direct et **n’enregistre pas l’audio**.
@@ -52,6 +58,7 @@ Le navigateur demande l’autorisation d’utiliser le microphone lors du démar
 | `index.html` | Pages Mesure, Historique, Résultats et À propos. |
 | `styles.css` | Présentation adaptative et styles de l’interface. |
 | `app.js` | Capture et analyse audio côté navigateur, géolocalisation, statistiques, stockage et exports. |
+| `app.webmanifest` et `service-worker.js` | Métadonnées d’installation et ressources mises en cache pour un usage hors ligne. |
 | `README.md` | Documentation de cette version Web et distinction avec l’application Android d’origine. |
 
 ## Projet Android d’origine

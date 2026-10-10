@@ -810,3 +810,11 @@ window.addEventListener("pagehide", () => {
 renderHistory();
 updateMeasurementDisplay();
 setMeasurementState("ready");
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js").catch(() => {
+      showToast("La mise en cache hors ligne n’a pas pu être activée.", true);
+    });
+  });
+}
